@@ -1,0 +1,327 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=0.6 cm, 
+    bottom=0.5 cm, 
+    left=1.35 cm, 
+    right=1.35 cm, 
+    footskip=0 cm, 
+]{geometry} 
+\usepackage{titlesec} 
+\usepackage{tabularx} 
+\usepackage{array} 
+\usepackage[dvipsnames]{xcolor} 
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{primaryColor}{RGB}{0, 79, 144} 
+\usepackage{enumitem} 
+\usepackage{fontawesome5} 
+\usepackage{amsmath} 
+
+% --- Hyperref must be loaded only ONCE ---
+\usepackage[
+    pdftitle={Akshat Rauthan's Resume},
+    pdfauthor={Akshat Rauthan},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor 
+]{hyperref} 
+
+\usepackage[pscoord]{eso-pic} 
+\usepackage{calc} 
+\usepackage{bookmark} % Must come after hyperref
+\usepackage{lastpage} 
+\usepackage{changepage} 
+\usepackage{paracol} 
+\usepackage{ifthen} 
+\usepackage{needspace} 
+\usepackage{iftex} 
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[utf8]{inputenc}
+    \usepackage{libertine}
+\fi
+
+% Some settings:
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} 
+\pagestyle{empty} 
+\setcounter{secnumdepth}{0} 
+\setlength{\parindent}{0pt} 
+\setlength{\topskip}{0pt} 
+\setlength{\columnsep}{0cm} 
+\makeatletter
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{-1pt}{0.2 cm}{0.1 cm}
+
+\renewcommand\labelitemi{$\circ$} 
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.06 cm,
+        parsep=0.06 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} 
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} 
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{0.2 cm + 0.00001 cm}{0.2 cm + 0.00001 cm}
+}{
+    \end{adjustwidth}
+} 
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} 
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} 
+
+\newcommand{\placelastupdatedtext}{% 
+  \AddToShipoutPictureFG*{% 
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{}\hspace{\widthof{}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip   
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \placelastupdatedtext
+
+
+
+% Resume Header
+\begin{header}
+    \textbf{\fontsize{24 pt}{24 pt}\selectfont Akshat Rauthan}
+
+    \vspace{0.3 cm}
+
+    \normalsize
+    \mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}Haridwar}%
+    \kern 0.25 cm%
+    \AND%
+    \kern 0.25 cm%
+    \mbox{\hrefWithoutArrow{mailto:akshatrauthan9433@gmail.com}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}akshatrauthan9433@gmail.com}}%
+    \kern 0.25 cm%
+    \AND%
+    \kern 0.25 cm%
+    \mbox{\hrefWithoutArrow{tel:+917217539649}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}+91 72175 39649}}%
+    \kern 0.25 cm%
+    \AND%
+    \kern 0.25 cm%
+    \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/akshat-rauthan-abba91214}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}akshat-rauthan}}%
+    \kern 0.25 cm%
+    \AND%
+    \kern 0.25 cm%
+    \mbox{\hrefWithoutArrow{https://github.com/AkshatRauthan/}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}AkshatRauthan}}%
+    
+\end{header}
+\vspace{0.1 cm}
+
+
+
+% Career Objective
+\section{Career Objective}
+    \begin{onecolentry}
+    Backend engineer who owned the production backend of a trading analytics platform serving 1k+ users. 
+    Experienced in microservices, real-time systems (WebSockets, Kafka), and distributed infrastructure.
+    \end{onecolentry}
+\vspace{0.05 cm}
+    
+
+
+% Education
+\section{Education}        
+    
+    \begin{twocolentry}{\textit{July 2023 -- Jun 2027}}
+        \textbf{COER University}
+        $\;$--$\;$ \textit{B.Tech in Computer Science \& Engineering}
+        \quad $|$ \quad \textbf{CGPA:} 8.93/10
+        \end{twocolentry}
+    % \vspace{0.05 cm}
+        
+    % \begin{onecolentry}
+    %     \textbf{Class XII (PCM):} 87\% \textit{[ The Oxford School, 2023 ]} \quad \quad \quad \quad \quad \quad \quad $|$ \quad
+    %     \textbf{Class X:} 91\% \textit{[ Police Modern School, 2021\ ]}
+    % \end{onecolentry}
+\vspace{0.10 cm}
+    
+
+
+% Internships Section
+\section{Internship}
+    \begin{twocolentry}{   
+        \textit{July 2025 -- Aug 2026}}
+            \textbf{Tradylytics - Software Developer Intern}
+            \quad
+            \textit{https://www.tradylytics.in}
+    \end{twocolentry}   
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Primary owner of the \textbf{backend infrastructure} for a trading analytics platform serving \textbf{1k+ users}, working in a four-person 
+                engineering team: designed services, databases, and third-party integrations end to end.
+            \item Led the migration of the legacy \textbf{JavaScript codebase to TypeScript} and re-architected the backend into \textbf{two services}, 
+                eliminating logic duplicated across multiple places.
+            \item Redesigned database schema to pre-calculate rolling trade metrics, reducing \textbf{API response time by 30\% }.
+            \item Integrated \textbf{10+ third-party brokerage platforms} leveraging \textbf{Webhooks and WebSockets} to build a centralized real-time portfolio 
+                dashboard covering \textbf{equity, futures, options and crypto} investements.
+            \item Built a \textbf{multi-tenant B2B platform} for trading schools, enabling institutional partners to provision student access and monitor cohort 
+                portfolios via a centralized admin portal providing access to our AI integrated journaling platform.
+            \item \textbf{Tech Stack:} Node.js, JavaScript, TypeScript, FastAPI, Python, MongoDB, Redis, Docker
+        \end{highlights}
+    \end{onecolentry}
+\vspace{0.1 cm}
+    
+
+
+% Projects Section
+\section{Projects}
+
+
+    % Project 1: AeroLink [Major Backend Project]
+    \begin{twocolentry}{\textit{July 2026}}
+        \textbf{AeroLink - Flight Booking Application} \quad
+        % \hrefWithoutArrow{https://github.com/AkshatRauthan/flights-booking-app}{\textbf{[Live]}} \quad
+        \textit{https://github.com/AkshatRauthan/AeroLink}
+    \end{twocolentry}
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Architected a \textbf{7-service microservices backend} (Node.js, TypeScript, \textbf{pnpm monorepo}, Docker) fronted by a custom \textbf{reverse 
+                proxy} handling auth, \textbf{IP + path-based rate limiting}, and inline \textbf{gRPC} token validation.
+            \item Engineered a \textbf{real-time flight data streaming pipeline} in Go, generating synthetic route, inventory, and dynamic pricing streams over 
+                \textbf{Apache Kafka} via CRON-driven routines to mimic live airline partner APIs.
+            \item Designed a \textbf{plug-and-play database sharding and read/write replication layer} in the shared infrastructure module, enabling any service 
+                to independently opt into horizontal scaling and read distribution without modifying business logic.
+            \item Implemented \textbf{RabbitMQ} workflows using \textbf{TTL queues and dead-letter exchanges} for automatic seat-hold expiry and notification 
+                delivery with \textbf{exponential backoff retries and a Dead Letter Queue} for failed messages.
+            \item \textbf{Tech Stack:} Node.js, TypeScript, Go, MySQL, Redis, RabbitMQ, Kafka, gRPC, Docker
+        \end{highlights}
+    \end{onecolentry}
+    \vspace{0.3 cm}
+
+
+    % Project 2: Vault [New Flavour Of Cryptography, Hashing Tamper Detection and Digital Signatures That Is Rare]
+    \begin{twocolentry}{\textit{October 2026 - Present}}
+        \textbf{Vault - Document Integrity System} \quad
+        \textit{https://github.com/AkshatRauthan/Vault}
+    \end{twocolentry}
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Designed a \textbf{tamper-detection system for PDFs} using \textbf{SHA-256 hashing, Merkle trees, and Ed25519 digital signatures}, pinpointing 
+                the exact \textbf{page and paragraph} that was modified instead of returning a generic ``tampered'' result.
+            \item Built a \textbf{deterministic, versioned segmentation and canonicalization pipeline} (pdf.js) so identical content always yields identical hashes, 
+                using domain-separated Merkle nodes to prevent second-preimage attacks and detect reordering.
+            \item Implemented \textbf{signed, versioned proofs} with a portable sidecar file and backend recovery copy, plus a React viewer that highlights 
+                modified paragraphs on the original PDF.
+            \item Integrated \textbf{OpenBao} for key management: user private keys are stored in it and manifests are signed inside it, so keys never reach the 
+                application layer. Secured the backend with \textbf{TLS and internally issued certificates} for its setup.
+            \item \textbf{Tech Stack:} TypeScript, Node.js, Express, React, MongoDB, pdf.js, OpenBao
+        \end{highlights}
+    \end{onecolentry}
+    \vspace{0.3 cm}
+
+
+    % Project 3: Real Time Chat App [New Flavour Of ETEE, WebRTC for Audio/Video stearms, Websockets For Chatting]
+    \begin{twocolentry}{\textit{April 2026}}
+        \textbf{Real-Time Chat App} \quad
+        \textit{https://github.com/AkshatRauthan/real-time-chat-app}
+    \end{twocolentry}
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Built a horizontally scalable \textbf{WebSocket backend} (Socket.IO, \textbf{Redis Pub/Sub}) with a TTL-based Redis presence and session store, 
+                relaying messages across multiple nodes behind Nginx.
+            \item Decoupled delivery from persistence with a \textbf{write-behind batch queue}, cutting \textbf{P99 message latency from ~85ms to less than 20ms}; replaced 
+                N+1 queries with batch queries, CTEs, and composite indexes, reducing \textbf{DB IOPS by 75\%}.
+            \item Load-tested with \textbf{k6 (5,000 concurrent WebSockets)} and exposed \textbf{Prometheus} metrics; added \textbf{E2EE} (TweetNaCl) and 
+                \textbf{WebRTC} signaling for voice/video calls.
+            \item \textbf{Tech Stack:} TypeScript, Node.js, Socket.IO, Redis, BullMQ, PostgreSQL, Docker, React
+        \end{highlights}
+    \end{onecolentry}
+
+
+
+% Techinical Skills 
+\section{Technical Skills}
+
+    \begin{onecolentry}
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabularx}{\textwidth}{@{} X X @{}}
+            \textbf{Languages:} C++, TypeScript, Go, Python 
+            & 
+            \textbf{Databases:} MongoDB, MySQL, PostgreSQL \\
+            
+            % \textbf{Tools:} Git, GitHub, Docker, Postman, Linux (Ubuntu) 
+            % & 
+            % \textbf{Concepts:} OOPs, REST APIs,  JWT \\
+            
+            \textbf{Backend:} WebSockets, gRPC, Kafka, RabbitMQ
+            &
+            \textbf{DevOps:} Docker, Kubernetes, Github Actions \\
+        \end{tabularx}
+    \end{onecolentry}
+\vspace{0.1cm}
+
+
+
+% % Achievements
+% \section{Achievements}
+%     \begin{highlights}
+%         \item \textbf{Problem Solving:} Solved 300+ algorithmic challenges on LeetCode, GFG, CodeForces combined.
+%         \item \textbf{Internship:} Secured a software developer internship in 3rd year in a fintech startup.
+%     \end{highlights}
+    
+
+\end{document}
